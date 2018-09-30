@@ -1,0 +1,94 @@
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body {
+  padding-top: 3.5rem;
+}
+.jumbotron{
+	text-align: center;
+	background-image: url('../images/bg1.jpg');
+	background-position: right bottom;
+	background-size: cover;
+}
+.navbar_right{
+
+    color:darkGreen;
+}
+
+.src{
+	text-align: center;
+}
+.jumbotron h1{
+	font-family: 'Arvo', courier, serif;
+	margin: 5px;
+	/*background-color: lightgreen;
+	padding: 10px;
+	border: 5px solid*/
+}
+.container p{
+padding-top: 20px;
+padding-right: 40px;
+padding-left: 40px;
+color:#ffffff;
+font-weight: 1000px;
+}
+.container h1{
+	font-family: 'Merienda', cursive;
+}
+.Main{
+	background-color: #f5f5f5;
+	margin-top: 50px;
+	padding-top: 25px;
+}
+#abc{
+	text-align: center;
+}
+.headings hr,.image hr{
+	border-top:1px solid darkGreen;
+	width:160px;
+	margin-top: 15px; 
+}
+.btn-lg{
+	font-size: 36px;
+}
+.emphasis{
+	color:#ffffff;
+}
+
+.container,.headings,.container_1{
+	text-align: center;
+}
+.container_1 h2, .image h1{
+	color: red;
+	font-family: 'Arvo',courier,serif;
+}
+.container_1{
+	padding-left: 40px;
+	padding-right: 40px;
+}
+.student {
+	text-align: center;
+	font-size: 18px;
+	margin-left: 100px;
+	margin-right: 100px;	
+}
+.image {
+	text-align: center;
+}
+/* Medium devices (desktops, 992px and up) */
+@media (max-width: 1199px) { 
+	.jumbotron h1{
+		font-size: 50px;
+		margin-bottom: 30px;
+	}
+}
+@media (max-width: 991px) { 
+	.jumbotron h1{
+		font-size: 40px;
+	}
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}

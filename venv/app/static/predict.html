@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <title>App</title>
+  <style media="screen">
+      *{
+        font-size: 30px;
+      }
+  </style>
+</head>
+<body>
+  <input type="file" id="image-selector">
+  <button id="predict-button">Predict</button>
+  <p style="font-weight:bold;">Predictions</p>
+  <p>City : <span id="city-prediction"></span></p>
+  <p>Bottles :<span id="bottles-prediction"></span></p>
+  <p>Flower Pots :<span id="pots-prediction"></span></p>
+  <p>Tyres :<span id="tyres-prediction"></span></p>
+  <img id="selected-image" src=""/>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script>
+    let base64Image;
+    $("#image-selector").change(function(){
+      let reader = new FileReader();
+      reader.onload = function(e){
+        let dataURL = reader.result;
+        $('#selected-image').attr("src",dataURL);
+        base64Image = dataURL.replace("data:image/png;base64,","");
+      }
+      reader.readAsDataURL($('#image-selector')[0].files[0]);
+      $("#city-prediction").text("");
+      $("#bottles-prediction").text("");
+      $("#pots-prediction").text("");
+      $("#tyres-prediction").text("");
+    });
+
+    $("#predict-button").click(function(event){
+      let message = {
+        image:base64Image
+      }
+      $.post("http://127.0.0.1:5000/predict",JSON.stringify(message),function(response){
+        $("#city-prediction").text(response.prediction.city.toFixed(6));
+        $("#bottles-prediction").text(response.prediction.bottles.toFixed(6));
+        $("#pots-prediction").text(response.prediction.pots.toFixed(6));
+        $("#tyres-prediction").text(response.prediction.tyres.toFixed(6));
+        console.log(response);
+      });
+    });
+  </script>
+</body>
+</html>
